@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% block head%}
+{% block title %}{% endblock title%} 
+<style>
+*{
+        margin: 0;
+        padding: 0;
+    }
+    .main_heading {
+        text-align: center;
+        font-size: 60;
+    }
+    body{
+            background-color: gainsboro;
+        }
+        .form
+        {
+            padding: 40px;
+        }  
+        body{  
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        input
+        {
+            width: 100%;
+            height: 35px;
+            border-radius: 8px;
+            border: none;
+        }
+        .button{
+            width: 100%;
+            background-color: rgba(76, 179, 179, 0.575);
+            border: none;
+            height: 50px;
+            border-radius: 8px;
+           
+        }
+        .button:hover{
+            background-color: rgb(76, 179, 179) ;
+            cursor: pointer;
+        }
+        .nav{
+            background-color: rgb(53, 48, 48) ;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            color: white;
+            text-decoration: none;
+        }
+        .footer {
+            width: 100%;
+            background-image: url(238.jpg);
+        }
+        .footer h1 {
+            padding-top: 30px;
+        }
+        .footer a {
+            padding: 20px;
+        }
+        .fa {
+            padding: 20px;
+            font-size: 30px;
+            width: 30px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+            border-radius: 50%;
+          }
+          
+          .fa:hover {
+              opacity: 0.7;
+          }
+          
+          .fa-facebook {
+            background: #1452da;
+            color: white;
+          }
+          .fa-instagram {
+            background: #d11010;
+            color: white;
+          }
+          .fa-twitter {
+            background: #0a82df;
+            color: white;
+          }
+</style>
+{% endblock head %}
+{%block body %}
+<div style="text-align:center">
+   <div class="nav">
+      <a href="home" class="fa fa-home" style="font-size: 36px;">HOME</a>
+    </div>
+   <h1 style="text-align: center; background-color: rgb(76, 179, 179); padding: 30px;"> Marks</h1>
+   
+   
+
+   <form action="marks" method="post">
+   {% csrf_token %}
+     <table border="1"  width="100%" style="background-color: black;  color: aliceblue;">
+         <tr style="font-size: x-large;">
+            <th style="padding: 30px; border-radius: 10px; border-color: rgba(0, 253, 253, 0.575);  border-width: 5px;"> Roll No</th>
+            <th style="padding: 30px; border-radius: 10px; border-color:rgba(0, 253, 253, 0.575);  border-width: 5px;"> Name</th>
+            <th style="padding: 30px; border-radius: 10px; border-color:rgba(0, 253, 253, 0.575); border-width: 5px;"> Marks </th>
+
+         </tr>
+
+      {% for i in res %}
+         <tr>
+            <td style="padding: 20px; font-size: x-large; border-radius: 10px; border-color:rgba(100, 119, 115, 0.984); border-width: 3px;">{{i.rollno}}</td>
+            <td style="border-radius: 10px; font-size: x-large; border-color:rgba(100, 119, 115, 0.984);; border-width: 3px;">{{i.sname}}</td>
+            <td style="padding: 20px; font-size: x-large; border-radius: 10px; border-color:rgba(100, 119, 115, 0.984);; border-width: 3px;"><input  type="number" name= "marks" placeholder="Marks"></td>
+         </tr>
+      {%endfor %}      
+       
+     
+     
+     </table>
+     <br>
+     <br>
+
+      
+     <div class="button">
+      <input class = "button" type="submit" value="Update Marks"><br><br>
+  </div>
+    </form>
+    {{msg}}
+   </div>
+ 
+   <div class="footer">
+    <h1>Dr. Virendra Swarup Institute of Computer Studies</h1>
+    <hr>
+    <h2>Made by HARSHIT HAYARAN</h2>
+    <hr>
+    <h3>Follow me on social plateforms </h3><br>
+    <a href="https://www.linkedin.com/in/harshit-hayaran-3140b91a9"  target="_blanck" class="fa fa-facebook">Linked In</a>
+    <a href="https://mobile.twitter.com/HarshitHayaran"  target="_blanck" class="fa fa-twitter">Twitter</a>
+    <a href="https://www.instagram.com/soham_hayaran/" target="_blanck" class="fa fa-instagram">Instagram</a>
+</div>
+
+{% endblock body%}
